@@ -1,0 +1,36 @@
+
+.map-icon-label i {
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 55px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.map {
+    padding-bottom:0.25rem !important;
+    padding-top:0.25rem !important;
+    display:inline-block !important;
+}
+.map.card-header {
+    font-size: small !important;
+}
+.map.card-body {
+    font-size: x-small !important;
+}
+
+#legend {
+   background: white;
+   padding: 10px;
+   margin: 5px;
+   font-size: 12px;
+   font-family: Calibri;
+
+}
+.color {
+   border: 1px solid;
+   height: 12px;
+   width: 12px;
+   margin-right: 3px;
+   float: left;
+}

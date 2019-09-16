@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-general :: head(~{}, ~{})">
+<body>
+
+
+	<header th:replace="fragments/fragment-general :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+
+			<div class="card-header">
+				<form action="#" th:action="@{/repartos/list}" method="GET">
+					<!-- 					<span th:text="${titulo}"></span> -->
+					<p>
+						<span th:text="#{text.reparto.ver.header.numero}"></span>
+						<span class="custom-title-generic" th:text="${reparto.id}"></span>
+						<span th:text="#{text.reparto.ver.header.matricula}"></span>
+						<span class="custom-title-generic" th:text="${reparto.vehiculo.matricula}"></span>
+						<span th:text="#{text.reparto.ver.header.driver}"></span>
+						<span class="custom-title-generic" th:text="${reparto.driver.firstName}"></span>
+						<input type="hidden" th:value="${{reparto.fecha}}" th:name="paramDate" />
+						<input type="submit" class="btn btn-outline-secondary btn-xs float-right"
+							th:value="#{text.global.volver}" />
+					</p>
+				</form>
+			</div>
+			<div class="card-body">
+				<div class="table-wrapper-scroll-y">
+					<table th:if="${not #lists.isEmpty(reparto.detalles)}" class="table table-striped table-hover">
+						<thead class="thead-inverse">
+							<tr>
+								<th th:text="#{text.reparto.detalle.id}"></th>
+								<th th:text="#{text.reparto.detalle.cliente.codigo}"></th>
+								<th th:text="#{text.reparto.detalle.cliente.nombre}"></th>
+								<th th:text="#{text.reparto.detalle.pedido}"></th>
+								<th th:text="#{text.reparto.detalle.pedido.peso}"></th>
+								<th th:text="#{text.reparto.detalle.entrega}"></th>
+								<th th:text="#{text.reparto.detalle.entrega.peso}"></th>
+								<th th:text="#{text.reparto.detalle.hora_descarga}"></th>
+								<th th:text="#{text.reparto.detalle.fotos}"></th>
+								<th th:text="#{text.reparto.detalle.comentario_descarga}"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="detalle: ${reparto.detalles}">
+								<td th:text="${detalle.id}"></td>
+								<td th:text="${detalle.cliente.codigo}"></td>
+								<td th:text="${detalle.cliente.nombre}" class="custom-left-aligment"></td>
+								<td th:text="${detalle.note}"></td>
+								<td th:text="${detalle.peso}"></td>
+								<td th:text="${detalle.entrega}"></td>
+								<td th:text="${detalle.pesoEntrega}"></td>
+								<td th:text="${#dates.format(detalle.horaDescarga, 'dd-MM-yyyy HH:mm:ss')}"></td>
+								<td th:text="${detalle.fotos}"></td>
+								<td th:text="${detalle.commentBack}" class="comment-detalle custom-left-aligment"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments/fragment-general :: footer"></footer>
+</body>
+</html>

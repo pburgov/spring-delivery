@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<title th:text="#{text.empresa.nombre}"></title>
+
+<!-- Common styles and scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
+
+
+</head>
+<body>
+	<div class="modal modal-warning fade in" th:id="modal-warning+${user.id }">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h5 class="modal-title">Delete User</h5>
+				</div>
+				<div class="modal-body">
+					<h3>Are you sure want to delete this user?</h3>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+					<a type="button" class="btn btn-outline" th:href="@{/user/delete/{id}(id=${user.id})}">
+						<i class="fa fa-check"></i>
+						&nbsp;Yes
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+</body>
+</html>

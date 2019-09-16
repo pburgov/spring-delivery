@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-general :: head(~{::link}, ~{})">
+    <link rel="stylesheet" th:href="@{/css/mapa.css}" type="text/css"/>
+</head>
+<body>
+<header th:replace="fragments/fragment-general :: header"></header>
+<div class="container w-75 p-3">
+
+    <div class="card bg-ligth">
+        <div class="card-header" th:text="#{text.customers.list.title}"></div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a class="btn btn-success btn-xs" th:href="@{/not_implemented_yet}" th:text="#{text.customers.list.crear_cliente}">Crear Cliente</a>
+            </h4>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th th:text="#{text.customers.list.id}">id</th>
+                            <th th:text="#{text.customers.list.codigo}">C&oacute;digo</th>
+                            <th th:text="#{text.customers.list.nombre}">Nombre</th>
+                            <th th:text="#{text.global.editar}">Editar</th>
+                            <th th:text="#{text.global.eliminar}">Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cliente: ${clientes}">
+                            <td>
+                                <!--	<a class="btn btn-primary btn-xs" th:href="@{/customers/ver/} + ${cliente.id}" th:text="${cliente.id}"></a>-->
+                                <a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom"
+                                   th:title="#{tooltip.customers.list.ver}" th:href="@{/not_implemented_yet}"
+                                   th:id="'tooltipCustomerDetails'" th:text="${cliente.id}">
+                                </a>
+                            </td>
+                            <td th:text="${cliente.codigo}"></td>
+                            <td th:text="${cliente.nombre}" class="text-left"></td>
+                            <td>
+                                <!--	<a class="btn btn-primary btn-xs" th:href="@{/form/} + ${cliente.id}" th:text="Editar"></a>-->
+                                <a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom"
+                                   th:title="#{tooltip.customers.list.edit}" th:href="@{/not_implemented_yet}"
+                                   th:id="'tooltipCustomerEdit'"  th:text="#{text.global.editar}"></a>
+                            </td>
+                            <td>
+                                <!--<a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="Eliminar"
+                                    onClick="return confirm('Estas seguro que quieres eliminar?');"></a>-->
+                                <a class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom"
+                                   th:title="#{tooltip.customers.list.delete}" th:href="@{/not_implemented_yet}"
+                                   th:id="'tooltipCustomerDelete'"  th:text="#{text.global.eliminar}"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <nav th:replace="fragments/paginator-nav :: paginator"></nav>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/fragment-general :: footer"></footer>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+            $('[id*="tooltip"]').tooltip({
+            'delay': {
+                show: 1500,
+                hide: 100
+            }
+        });
+    });
+    </script>
+</body>
+</html>

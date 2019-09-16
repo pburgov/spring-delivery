@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-general :: head(~{}, ~{})"></head>
+<body>
+
+	<header th:replace="fragments/fragment-general :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-danger text-white">
+			<div class="card-header">Achtung baby: Denied Access!!!</div>
+			<div class="card-body">
+				<h6 class="card-text" th:text="#{text.global.no_access_text}"/>
+                <br/>
+				<a th:href="@{/repartos/list}" class="btn btn-outline-light" role="button">Go Back</a>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="fragments/fragment-general :: footer"></footer>
+</body>
+</html>

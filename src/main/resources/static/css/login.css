@@ -1,0 +1,102 @@
+:root{
+	--teal:#56CC9D;
+}
+html{
+	font-size: 1rem;
+}
+
+body {
+ 	/*background-image: url("/images/almond_bg.jpg");*/ 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding: 10px;
+	font-size: inherit; 
+}
+
+.container hr {
+	color: #fff;
+	height: 0px;
+	background-color: #fff;
+}
+
+
+.container .alert {
+	font-size:  calc(0.66rem + 0.75vw);
+}
+
+
+
+.main-div {
+	border-radius: .25rem;
+	margin: 10px auto 30px;
+	padding: 50px 70px 70px 71px;
+ 	/*border: 1px solid #5fb832;*/
+ 	border: 1px solid var(--teal); 
+ 	text-align: center;
+}
+
+.main-div img {
+	max-width: 50%;
+	height: auto;
+	color: var(--teal);
+}
+
+
+.panel h2 {
+	/*color: #5fb832;*/
+	color:var(--teal);
+	margin-bottom: 1vw;
+	
+}
+
+
+
+ .form-group {
+	margin-bottom: 20px;
+}
+
+.form-control {
+	background: #f7f7f7 none repeat scroll 0 0;
+	border: 1px solid #d4d4d4;
+	border-radius: 4px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 1rem;
+} 
+
+.form-text{
+	text-align: left;
+	/*font-weight: bold;*/
+}
+
+
+ code{
+	/*color: #5fb832 !important;*/
+	color: var(--teal) !important;
+	font-size:inherit;
+}
+
+.btn.btn-success{
+	font-size: 1vw;
+	height: auto;
+	display: block;
+	fill: var(--teal);
+	padding: 0.5vw;
+}
+
+
+.back {
+	text-align: left;
+	margin-top: 10px;
+}
+
+.back a {
+	color: #444444;
+	font-size: 13px;
+	text-decoration: none;
+}
+
+.icon-spring:hover{
+	color: blue;
+}

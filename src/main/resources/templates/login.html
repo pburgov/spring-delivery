@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-general :: head(~{::link}, ~{})">
+    <link th:href="@{/css/font-mfizz/font-mfizz.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css"/>
+</head>
+<!-- <body id="LoginForm"> -->
+<body>
+<header>
+    <div class="container py-2 px-0">
+        <div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+        <div class="alert alert-danger " th:if="${error != null}" th:text="${error}"></div>
+        <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+        <div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="login-form">
+        <div class="main-div col-md-6 col-xl-4">
+            <div class="panel">
+                <p>
+                    <img alt="Frutas Nieves logo" th:src="@{/images/spring_icon.png}"/>
+                </p>
+                <h2>Introduce user &amp; password</h2>
+                <div class="panel-body">
+                    <form th:action="@{/login}" method="post" class="form-signin">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" id="username"
+                                   th:placeholder="#{input.username.placeholder}" aria-describedby="emailHelp" required
+                                   autofocus/>
+                            <small id="emailHelp" class="form-text text-muted">Use <code>admin</code> or
+                                <code>user</code></small>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password"
+                                   th:placeholder="#{input.password.placeholder}" aria-describedby="passwordHelp"
+                                   required/>
+                            <small id="passwordHelp" class="form-text text-muted">Use <code>123</code> for both cases
+                            </small>
+                        </div>
+                        <button type="submit" class="btn btn-success col-md-6 col-xl-4">Login</button>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
