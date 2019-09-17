@@ -18,12 +18,15 @@ import org.springframework.stereotype.Service;
 public class PictureServiceImpl implements PictureService {
 	
 	private final Log logger = LogFactory.getLog(this.getClass());
-	
-	@Autowired
 	private ConfigProperties configProperties;
-	
 
-	@Override
+
+	@Autowired
+    public PictureServiceImpl( ConfigProperties configProperties ) {
+        this.configProperties = configProperties;
+    }
+
+    @Override
 	public List<String> loadPictures(Long id) {
 		List<String> namePictures = new ArrayList<>();
 		Path p = Paths.get(configProperties.getFotosPath());

@@ -109,10 +109,11 @@ public class RepartoController {
         DateFormatter dateFormatter = new DateFormatter();
         String paramDate = dateFormatter.print(date, LocaleContextHolder.getLocale());
 
-        if(repartos.isEmpty()){
+        if ( repartos.isEmpty() ) {
             logger.info("No Deliveries in this Date");
             flash.addFlashAttribute("error",
-                                    messageSource.getMessage("text.repartos.list.flash.no_deliveries.error", new Object[]{paramDate}, null));
+                                    messageSource.getMessage("text.repartos.list.flash.no_deliveries.error", new Object[]{
+                                        paramDate}, null));
             return "redirect:/repartos/list";
         }
 
@@ -128,7 +129,6 @@ public class RepartoController {
         RedirectAttributes flash, Model model ) {
         if ( id != null ) {
             Reparto reparto = repartoService.fetchByIdWithVehiculoWithDriverWithDetallesWithCliente(id);
-            getJSONObjectList(reparto);
             model.addAttribute("jsonMap", getJSONObject(reparto));
             model.addAttribute("reparto", reparto);
         }
@@ -140,7 +140,7 @@ public class RepartoController {
     @RequestMapping( value = "/fotos/{id}", method = RequestMethod.GET )
     public List <String> fotos( @PathVariable( value = "id" ) Long id, Model model ) {
 //        List <String> pictures = pictureService.loadPictures(id);
-        List <String> pictures = loadPicturesDemo().subList(0,id.intValue());
+        List <String> pictures = loadPicturesDemo().subList(0, id.intValue());
         model.addAttribute("pictures", pictures);
 
         return pictures;
@@ -170,18 +170,7 @@ public class RepartoController {
         return Date.valueOf(firstDate);
     }
 
-    private void getJSONObjectList( Reparto reparto ) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().serializeNulls()
-                                     .registerTypeAdapter(Reparto.class, new RepartoSerializer()).create();
-        try {
-            gson.toJson(reparto, new FileWriter(configProperties.getTestJsonPath()));
-        } catch ( JsonIOException | IOException e ) {
-
-            e.printStackTrace();
-        }
-    }
-
-    static List <String> loadPicturesDemo() {
+    private static List <String> loadPicturesDemo() {
         List <String> pictures = new ArrayList <>();
         pictures.add("Foto-1.jpg");
         pictures.add("Foto-2.jpg");
@@ -196,5 +185,14 @@ public class RepartoController {
         return pictures;
     }
 
-    ;
+    private void getJSONObjectList( Reparto reparto ) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().serializeNulls()
+                                     .registerTypeAdapter(Reparto.class, new RepartoSerializer()).create();
+        try {
+            gson.toJson(reparto, new FileWriter(configProperties.getTestJsonPath()));
+        } catch ( JsonIOException | IOException e ) {
+
+            e.printStackTrace();
+        }
+    }
 }

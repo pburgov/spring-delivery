@@ -19,11 +19,7 @@ public class LoginController {
 
     @GetMapping("/showMyLoginPage")
     public String showMyLoginPage() {
-
-        // return "plain-login"; logger.info("principal: " + principal.getName());
-
         return "login";
-
     }
 
 
@@ -32,17 +28,17 @@ public class LoginController {
                         @RequestParam(value = "logout", required = false) String logout,
                         Model model, Principal principal, RedirectAttributes flash) {
 		
-		/*
+
 		  if(principal != null) { flash.addFlashAttribute("info",
-		  "Ya ha iniciado sesión anteriormente"); return "redirect:/reparto/listar"; }
-		 */
+		  "You have signed in before"); return "redirect:/repartos/list"; }
+
 
         if (error != null) {
-            model.addAttribute("error", "Error en el login: Nombre de usuario o contraseña incorrecta, por favor vuelva a intentarlo!");
+            model.addAttribute("error", "Login Incorrect: User or Password incorrect. Please try again!");
         }
 
         if (logout != null) {
-            model.addAttribute("success", "Ha cerrado sesión con éxito!");
+            model.addAttribute("success", "You have closed session successfully!");
         }
 
         return "login";
@@ -53,7 +49,7 @@ public class LoginController {
         @GetMapping("/favicon.ico")
         @ResponseBody
         void returnNoFavicon() {
-            System.out.println("llego");
+
         }
     }
 }

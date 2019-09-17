@@ -11,10 +11,14 @@ import org.springframework.data.domain.Pageable;
 
 public class VehiculoServiceImpl implements VehiculoService {
 
-	@Autowired
 	private VehiculoRepository vehiculoRepository;
 
-	@Override
+	@Autowired
+    public VehiculoServiceImpl( VehiculoRepository vehiculoRepository ) {
+        this.vehiculoRepository = vehiculoRepository;
+    }
+
+    @Override
 	public List<Vehiculo> findAll() {
 		return (List<Vehiculo>) vehiculoRepository.findAll();
 	}
