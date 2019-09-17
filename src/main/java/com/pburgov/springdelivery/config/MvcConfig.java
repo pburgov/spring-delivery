@@ -1,7 +1,5 @@
 package com.pburgov.springdelivery.config;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Locale;
 
 import org.apache.commons.logging.Log;
@@ -18,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.springframework.web.servlet.resource.PathResourceResolver;
 
 //import java.nio.file.Paths;
 //import org.slf4j.Logger;
@@ -30,10 +27,13 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 @ComponentScan( basePackages = "com.pburgov.springdelivery" )
 public class MvcConfig implements WebMvcConfigurer {
 
-    @Autowired
+    protected final Log logger = LogFactory.getLog(this.getClass());
+
     private ConfigProperties configProperties;
 
-    protected final Log logger = LogFactory.getLog(this.getClass());
+    @Autowired
+    public MvcConfig( ConfigProperties configProperties ) {
+        this.configProperties = configProperties;}
 
     @Override
     public void addResourceHandlers( ResourceHandlerRegistry registry ) {

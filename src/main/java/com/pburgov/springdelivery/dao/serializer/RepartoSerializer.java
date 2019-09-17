@@ -29,7 +29,7 @@ public class RepartoSerializer implements JsonSerializer <Reparto> {
         JsonObject repartoJsonObject = new JsonObject();
 
         repartoJsonObject.addProperty("id", reparto.getId());
-        repartoJsonObject.addProperty("usuario", reparto.getDriver().getUsuario());
+        repartoJsonObject.addProperty("usuario", reparto.getDriver().toString());
         repartoJsonObject.addProperty("fecha", repartoDf.format(reparto.getFecha()));
         repartoJsonObject.addProperty("matricula", reparto.getVehiculo().getMatricula());
 
