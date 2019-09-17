@@ -131,13 +131,15 @@ function bindInfoWindow(marker, map, infoWindow, content) {
 }
 
 function setLegend(jsonObject) {
+
     var legend = document.createElement('div');
     legend.id = 'legend';
     map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
 
     for (var i = 0; i < jsonObject.length; i++) {
+        console.log(jsonObject[i]);
         var reparto = jsonObject[i].reparto;
-        var chofer = reparto.chofer;
+        var chofer = reparto.usuario;
         var matricula = reparto.matricula;
         var co = colorlist[i];
         var div = document.createElement('div');
