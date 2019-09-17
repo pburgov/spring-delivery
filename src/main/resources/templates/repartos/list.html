@@ -14,16 +14,19 @@
                 <div class="card-header">
                     <span th:text="#{text.repartos.list.title}"></span> <a
                         class="btn custom-btn-outline-secondary btn-sm float-right" data-toggle="tooltip"
-                        data-placement="bottom" th:title="#{tooltip.reparto.listar.detalle}" th:text="#{text.global.detalles}"
+                        data-placement="bottom" th:title="#{tooltip.reparto.listar.detalle}"
+                        th:text="#{text.global.detalles}"
                         th:id="'tooltipVerDetallesReparto'"></a>
                 </div>
                 <div class="card-body">
                     <form action="#" th:action="@{/repartos/list}" method="GET">
                         <div class="form-group ml-1">
                             <div class="input-group">
-                                <input type="text" width="200" id="datepicker" th:placeholder="#{text.repartos.list.ask_for_date}"
+                                <input type="text" width="200" id="datepicker"
+                                       th:placeholder="#{text.repartos.list.ask_for_date}"
                                        th:name="paramDate" th:value="${paramDate}"/> <input
-                                    class="btn btn-success btn-xs ml-4 " type="submit" th:value="#{text.global.buscar}"/>
+                                    class="btn btn-success btn-xs ml-4 " type="submit"
+                                    th:value="#{text.global.buscar}"/>
                             </div>
                         </div>
                     </form>
@@ -46,7 +49,8 @@
                                 <td th:text="${{reparto.fecha}}"></td>
                                 <td th:text="${reparto.vehiculo.matricula}"></td>
                                 <td th:text="${reparto.driver}" class="custom-left-aligment"></td>
-                                <td th:id="'mapIcon_'+${reparto.id}" sec:authorize="hasRole('ROLE_ADMIN')"><i class="fas fa-map-marked-alt fa-2x"></i>
+                                <td th:id="'mapIcon_'+${reparto.id}" sec:authorize="hasRole('ROLE_ADMIN')"><i
+                                        class="fas fa-map-marked-alt fa-2x"></i>
                                 </td>
                             </tr>
                             </tbody>
@@ -62,39 +66,32 @@
             <div class="collapse" th:id="'detallesRepartoBlock'"></div>
         </div>
     </div>
-    <footer th:replace="fragments/fragment-general ::footer"></footer>
-</div>
-
-<div class="modal fade" id="dialogCalendar" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="card-header">
-                <p>Error en Selección de Fechas</p>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    Solo se pueden escoger fechas entre el 01-06-2019 y el 30-06-2019
-                </p>
-            </div>
-            <div class="card-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-warning">OK</a>
+    <div class="modal fade" id="dialogCalendar" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="card-header">
+                    <p>Error en Selección de Fechas</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Solo se pueden escoger fechas entre el 01-06-2019 y el 30-06-2019
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" data-dismiss="modal" class="btn btn-warning">OK</a>
+                </div>
             </div>
         </div>
     </div>
+    <footer th:replace="fragments/fragment-general ::footer"></footer>
 </div>
 
-<div th:replace="fragments/fragment-general :: google_maps(~{::script})"></div>
-<script charset="UTF8" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script charset="UTF8"
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script charset="UTF8" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script charset="UTF8" th:src="@{/js/custom-functions.js}" type="text/javascript"></script>
 <script charset="UTF8" th:src="@{/js/date-es-ES.js}" type="text/javascript"></script>
-<script charset="UTF8" src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js"
-        type="text/javascript"></script>
-<script charset="UTF8"
-        src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/messages/messages.es-es.js"
-        type="text/javascript"></script>
+<script charset="UTF8" th:src="@{/js/gijgo.min.js}" type="text/javascript"></script>
+<script charset="UTF8" th:src="@{/js/messages.es-es.js}" type="text/javascript"></script>
+<script charset="UTF8" th:src="@{/js/custom-functions.js}" type="text/javascript"></script>
+<div th:replace="fragments/fragment-general :: google_maps(~{::script})"></div>
+
 <script th:inline="javascript">
     var contextRoot = /*[[@{/}]]*/'';
 </script>
@@ -104,14 +101,14 @@
     $(document).ready(function () {
         initMap();
         $('#datepicker').datepicker({
-            uiLibrary : 'bootstrap4',
-            locale : 'es-es',
-            modal : true,
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es',
+            modal: true,
             //footer : true,
-            header : true,
-            format : "dd-mm-yyyy",
-            iconsLibrary : 'fontawesome',
-            weekStartDay : 1,
+            header: true,
+            format: "dd-mm-yyyy",
+            iconsLibrary: 'fontawesome',
+            weekStartDay: 1,
             showOnFocus: true
         });
 
@@ -182,7 +179,7 @@
         $.ajax({
             type: "GET",
             //url: contextRoot + "fotos/" + id,
-            url:  "fotos/" + id,
+            url: "fotos/" + id,
             success: function (data) {
                 fillData(data);
             },

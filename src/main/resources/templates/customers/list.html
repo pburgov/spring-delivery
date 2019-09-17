@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/fragment-general :: head(~{::link}, ~{})">
     <link rel="stylesheet" th:href="@{/css/mapa.css}" type="text/css"/>
 </head>
@@ -22,7 +23,7 @@
                             <th th:text="#{text.customers.list.codigo}">C&oacute;digo</th>
                             <th th:text="#{text.customers.list.nombre}">Nombre</th>
                             <th th:text="#{text.global.editar}">Editar</th>
-                            <th th:text="#{text.global.eliminar}">Eliminar</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{text.global.eliminar}">Eliminar</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,14 +38,11 @@
                             <td th:text="${cliente.codigo}"></td>
                             <td th:text="${cliente.nombre}" class="text-left"></td>
                             <td>
-                                <!--	<a class="btn btn-primary btn-xs" th:href="@{/form/} + ${cliente.id}" th:text="Editar"></a>-->
                                 <a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom"
                                    th:title="#{tooltip.customers.list.edit}" th:href="@{/not_implemented_yet}"
                                    th:id="'tooltipCustomerEdit'"  th:text="#{text.global.editar}"></a>
                             </td>
-                            <td>
-                                <!--<a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="Eliminar"
-                                    onClick="return confirm('Estas seguro que quieres eliminar?');"></a>-->
+                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom"
                                    th:title="#{tooltip.customers.list.delete}" th:href="@{/not_implemented_yet}"
                                    th:id="'tooltipCustomerDelete'"  th:text="#{text.global.eliminar}"></a>

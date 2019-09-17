@@ -19,7 +19,7 @@
 						<span th:text="#{text.reparto.ver.header.matricula}"></span>
 						<span class="custom-title-generic" th:text="${reparto.vehiculo.matricula}"></span>
 						<span th:text="#{text.reparto.ver.header.driver}"></span>
-						<span class="custom-title-generic" th:text="${reparto.driver.firstName}"></span>
+						<span class="custom-title-generic" th:text="${reparto.driver}"></span>
 						<input type="hidden" th:value="${{reparto.fecha}}" th:name="paramDate" />
 						<input type="submit" class="btn btn-outline-secondary btn-xs float-right"
 							th:value="#{text.global.volver}" />
