@@ -19,8 +19,11 @@
     <div class="login-form">
         <div class="main-div col-md-6 col-xl-4">
             <div class="panel">
+                <button id="infopop" type="button" class="btn btn-info btn-circle btn-xl float-right" data-toggle="infopop" title="Repository"
+                        data-content="You can check the code <a href='https://github.com/pburgov/spring-delivery' target='blank' title='Go To GitHub'>here</a>">
+                    <i  class=" fa fa-info"></i></button>
                 <p>
-                    <img alt="Frutas Nieves logo" th:src="@{/images/spring_icon.png}"/>
+                    <img alt="Logo" th:src="@{/images/spring_icon.png}"/>
                 </p>
                 <h2>Introduce user &amp; password</h2>
                 <div class="panel-body">
@@ -48,6 +51,17 @@
         </div>
     </div>
 </div>
+<script charset="UTF8" th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+<script charset="UTF8" th:src="@{/js/popper.min.js}" type="text/javascript"></script>
+<script charset="UTF8" th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $('[data-toggle="infopop"]').popover({html:true});
+    });
+
+
+</script>
 
 </body>
 </html>
