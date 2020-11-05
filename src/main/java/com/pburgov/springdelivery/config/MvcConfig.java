@@ -65,7 +65,6 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addFormatters( final FormatterRegistry registry ) {
-        // super.addFormatters(registry);
         registry.addFormatter(dateFormatter());
     }
 

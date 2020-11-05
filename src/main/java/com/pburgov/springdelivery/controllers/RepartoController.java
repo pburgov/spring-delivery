@@ -51,8 +51,8 @@ public class RepartoController {
     private ConfigProperties configProperties;
 
     private final Log logger = LogFactory.getLog(this.getClass());
-    private static final LocalDate START_DATE = LocalDate.of(2019, 8, 1);
-    private static final LocalDate END_DATE = LocalDate.of(2019, 8, 31);
+    private static final LocalDate START_DATE = LocalDate.of(2020, 8, 1);
+    private static final LocalDate END_DATE = LocalDate.of(2020, 8, 31);
 
     public RepartoController() {}
 
@@ -166,7 +166,7 @@ public class RepartoController {
     }
 
     private Date getFirstDayOfMonth() {
-        LocalDate firstDate = LocalDate.of(2019, 8, 1);
+        LocalDate firstDate = LocalDate.of(2020, 8, 1);
         return Date.valueOf(firstDate);
     }
 
